@@ -1,6 +1,3 @@
-
----
-
 # Amigo Secreto 🎉
 
 Projeto desenvolvido como parte do Curso **Praticando Lógica de Programação**, Alura ONE.
@@ -37,5 +34,4 @@ Este projeto simula o tradicional jogo de "Amigo Secreto", permitindo adicionar 
 - **Autor:** Raimundo Nonato de Sousa  
 - **Local:** Pacujá/CE  
 - **Data:** 16/02/2025  
-
----
+- **Aprimorado por**: Emanuel Lázaro Custódio Silva
