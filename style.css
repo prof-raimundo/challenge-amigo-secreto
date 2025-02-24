@@ -1,162 +1,248 @@
+/* 
+ O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação.
+ Aqui você deverá desenvolver a lógica para resolver o problema.
+ 
+ Curso: Praticando Logica de programação
+ Desafio: Challenge Amigo Secreto
+ Projeto: challenge-amigo-secreto.
+  
+ Autor: Raimundo Nonato de Sousa.
+ Local:	Pacujá/CE.
+ Data:	16/02/2025.
+
+ Aprimorado por: Emanuel Lázaro Custódio Silva
+*/
+
 :root {
-    --color-primary: #4B69FD;
-    --color-secondary: #FFF9EB;
-    --color-tertiary: #C4C4C4;
-    --color-button: #fe652b;
-    --color-button-hover: #e55720;
-    --color-text: #444444;
-    --color-white: #FFFFFF;
+  --primary-color: #3a3a70;       /* Azul sofisticado */
+  --secondary-color: #fefefe;      /* Fundo claro */
+  --accent-color: #2711a0;         /* Toque vibrante */
+  --text-color: #333333;           /* Texto escuro */
+  --white: #ffffff;
+  --font-family: 'Rubik', sans-serif;
+  --background-gradient: linear-gradient(135deg, #3a3a70, #4e4e9c);
 }
 
-/* Estilos gerais */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
-    background-color: var(--color-primary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, #1976d2, #0b326b); /* Gradiente azul */
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
-.main-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
+/* Cabeçalho com efeito animado */
+header.header-banner {
+  color: var(--white);
+  text-align: center;
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
 }
-
-/* Banner */
-.header-banner {
-    flex: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0 0;
+header.header-banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  mix-blend-mode: overlay;
 }
-
-/* Seção de entrada */
-.input-section {
-    flex: 60%;
-    background-color: var(--color-secondary);
-    border: 1px solid #000;
-    border-radius: 64px 64px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-}
-
-/* Títulos */
 .main-title {
-    font-size: 48px;
-    font-family: "Merriweather", serif;
-    font-weight: 900;
-    font-style: italic;
-    color: var(--color-white);
+  font-size: 3.5rem;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+header.header-banner img {
+  max-width: 500px;
+  border-radius: 50%;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 1;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-.section-title {
-    font-family: "Inter", serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 10px 0;
-    text-align: center;
+/* Botão de ajuda no cabeçalho */
+.help-button {
+  z-index: 2;
 }
 
-/* Contêineres de entrada e botão */
-.input-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
+/* Cards com efeito de elevação */
+.card-section {
+  background: var(--secondary-color);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
 }
 
-.input-name {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #000;
-    border-radius: 25px 0 0 25px;
-    font-size: 16px;
+/* Cabeçalhos de seção */
+.card-header {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--accent-color);
+  font-weight: 600;
 }
 
-.button-container {
-    width: 300px;
-    justify-content: center;
+/* Inputs com foco animado */
+input.form-control-lg, input.form-control {
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+input.form-control-lg:focus, input.form-control:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 8px var(--accent-color);
 }
 
-/* Estilos de entrada de texto */
-.input-title {
-    flex: 1;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 2px solid #333;
-    border-right: none;
-    border-radius: 25px 0 0 25px;
-    font-family: "Merriweather", serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+/* Botões com animação e efeitos de hover */
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-3px);
+}
+.btn-primary {
+  background: var(--primary-color);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: #2a2a5d;
+}
+.btn-secondary {
+  background: #dcdcdc;
+  color: var(--text-color);
+}
+.btn-secondary:hover {
+  background: #c0c0c0;
+}
+.btn-success {
+  background: #28a745;
+  color: var(--white);
+}
+.btn-success:hover {
+  background: #218838;
+}
+.btn-danger {
+  background: #dc3545;
+  color: var(--white);
+}
+.btn-danger:hover {
+  background: #c82333;
+}
+.btn-info {
+  background: #17a2b8;
+  color: var(--white);
+}
+.btn-info:hover {
+  background: #138496;
+}
+.btn-copy {
+  background: var(--accent-color);
+  color: var(--white);
+}
+.btn-copy:hover {
+  background: #e05b50;
+}
+.btn-outline-primary {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+.btn-outline-primary:hover {
+  background: var(--primary-color);
+  color: var(--white);
 }
 
-/* Estilos de botão */
-button {
-    padding: 15px 30px;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    border: 2px solid #000;
-    border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+/* Itens da lista com layout flexível */
+.list-group-item {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  transition: background 0.3s ease;
+}
+.list-group-item:hover {
+  background: #f9f9f9;
 }
 
-.button-add {
-    background-color: var(--color-tertiary);
-    color: var(--color-text);
-    border-radius: 0 25px 25px 0;
+/* Mensagem para lista vazia */
+.empty-list-message {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+  margin: 1rem 0;
 }
 
-.button-add:hover {
-    background-color: #a1a1a1;
+/* Área de resultado com estilo divertido */
+.result-area {
+  padding: 1.5rem;
+  border: 2px dashed var(--primary-color);
+  border-radius: 10px;
+  background: #fafafa;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
-/* Listas */
-ul {
-    list-style-type: none;
-    color: var(--color-text);
-    font-family: "Inter", sans-serif;
-    font-size: 18px;
-    margin: 20px 0;
+/* Toasts com bordas suaves */
+.toast {
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
-.result-list {
-    margin-top: 15px;
-    color: #05DF05;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
+/* Footer elegante */
+footer {
+  background: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
 }
 
-/* Botão de sortear título */
-.button-draw {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 10px 40px;
-    color: var(--color-white);
-    background-color: var(--color-button);
-    font-size: 16px;
+/* Responsividade aprimorada */
+@media (max-width: 768px) {
+  header.header-banner {
+    padding: 2rem 1rem;
+  }
+  .main-title {
+    font-size: 2.8rem;
+  }
+  header.header-banner img {
+    max-width: 250px;
+  }
+  .card-section {
+    margin: 1.5rem 1rem;
+    padding: 1.5rem;
+  }
+  input.form-control-lg, input.form-control, .btn {
+    font-size: 1rem;
+    padding: 0.65rem 1.2rem;
+  }
 }
 
-.button-draw img {
-    margin-right: 40px;
-}
-
-.button-draw:hover {
-    background-color: var(--color-button-hover);
+@media (min-width: 1200px) {
+  .card-section {
+    max-width: 60%;
+  }
 }
